@@ -1,0 +1,13 @@
+
+config
+
+git bash
+
+nodejs
+
+
+templates
+    npm install numjucks
+    pode instalar plugins para auto complet VS
+        inserir no settingjson as config para emmet
+

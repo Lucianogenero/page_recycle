@@ -1,0 +1,114 @@
+{% extends "layout.html"%}
+{% set pageId = "page-create-point" %}
+
+{% block title %}
+    <title>Criar um ponto de coleta</title>
+{% endblock title %}
+
+{% block style %}
+    <link rel="stylesheet" href="/styles/create-point.css">
+    <link rel="stylesheet" href="/styles/modal.css">
+{% endblock style %}    
+
+{% block items %} 
+{% include "partials/page-header.html"%}
+
+{% if saved %}
+    {% include "partials/created-point.html" %}
+{% endif %}
+
+    {# id="page-create-point"#}
+        <form action="/savepoint" method="post">
+            <h1>Cadastro do ponto de coleta</h1>
+            
+            <fieldset> <!--coleção de campos-->
+                <legend>
+                    <h2>Dados da entidade</h2>
+                </legend>
+                
+                <div class="field">
+                    <label for="">Nome da entidade</label>
+                    <input type="text" name="name" required>
+                </div>
+                
+                <div class="field-group">
+                    <div class="field">
+                        <label for="address">Endereço</label>
+                        <input type="text" name="address" required>
+                    </div>
+                    <div class="field">
+                        <label for="address2">Numero/complemento</label>
+                        <input type="text" name="address2" required>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <div class="field">
+                        <label for="state">Estado</label>
+                        <select name="uf" required>
+                            <option value="">Selecione o Estado</option>
+                        </select>
+
+                        <input type="hidden" name="state">
+                    </div>
+
+                    <div class="field">
+                        <label for="citie">Cidade</label>
+                        <select name="city" disabled required> <!--ocultar-->
+                            <option value="">Selecione o cidade</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Imagem/Banner</label>
+                    <input type="url" name="image" placeholder="https:\\">
+                </div>
+
+            </fieldset>
+
+            <fieldset>
+                <legend>
+                    <h2>itens de coleta</h2>
+                    <span>Selecione um ou mais itens</span>
+                </legend>
+                
+                <div class="items-grid">
+                    <li data-id="Pilhas e Baterias"> 
+                        <img src="/assets/baterias.svg" alt="Pilhas e Baterias">
+                        <span>Pilhas e Baterias</span>
+
+                    </li>
+                    <li data-id="Papeis e Papelão"> 
+                        <img src="/assets/papeis-papelao.svg" alt="Papeis e Papelão">
+                        <span>Papeis e Papelão</span>
+
+                    </li>
+                    <li data-id="Resíduos Eletrônico"> 
+                        <img src="/assets/eletronicos.svg" alt="Resíduos Eletrônico">
+                        <span>Resíduos Eletrônico</span>
+
+                    </li>
+                    <li data-id="Resíduos Organicos"> 
+                        <img src="/assets/organicos.svg" alt="Resíduos Organicos">
+                        <span>Resíduos Organicos</span>
+
+                    </li>
+                    <li data-id="Óleo de Cozinha"> 
+                        <img src="/assets/oleo.svg" alt="Óleo de Cozinha">
+                        <span>Óleo de Cozinha</span>
+
+                    </li>
+                    <li data-id="Lâmpadas"> 
+                        <img src="/assets/lampadas.svg" alt="lampadas">
+                        <span>Lâmpadas</span>
+
+                    </li>
+                </div>
+                <input type="hidden" name="items">  
+            </fieldset>
+
+            <button type="submit">Cadastrar ponto de coleta</button>
+        </form>
+
+    <script src="/scripts/create-point.js"></script>
+{% endblock items %}

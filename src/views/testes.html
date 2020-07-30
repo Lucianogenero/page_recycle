@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div id="teste">
+        <button id="MyBtn" onkeypress="EventButton()" >click</button>
+    </div>        
+
+    <div class="1">
+        <div class="uno" > 
+            <div class="due" >
+                <p>texto que devo pegar</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const buttonTest = document.querySelector("button")
+        buttonTest.addEventListener("click", () => {
+            console.log("eventlistener")
+        })
+
+        function EventButton() {
+            console.log("function")
+        }
+        //buttonTest.focus   
+    </script>
+</body>
+</html>
