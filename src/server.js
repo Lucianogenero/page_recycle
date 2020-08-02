@@ -3,7 +3,6 @@ const server = express()
 
 const db = require("./database/db")
 
-//config pasta public
 server.use(express.static("public"))
 
 server.use(express.urlencoded({extended: true})) /*body*/ 
@@ -14,9 +13,6 @@ nunjucks.configure("src/views", {
     express: server,
     noCache: true
 })
-    
-//config caminhos app
-//page inicial
 
 //server.get("/", (req, res) => { //SEM NUNJUCKS
 //    res.sendFile(__dirname + "/views/index.html")
@@ -32,7 +28,6 @@ server.get("/teste", (req, res) => {
 server.get("/create-point", (req, res) => { 
     console.log(req.body)
 
-    /*utilizar o post*/
     return res.render("create-point.html")
 })
 
@@ -91,6 +86,4 @@ server.get("/searchall", (req,res) => {
         return res.render("search-results.html", {places: rows, total: total})
     })
 })
-
-//ligar servidor
 server.listen(3000)
